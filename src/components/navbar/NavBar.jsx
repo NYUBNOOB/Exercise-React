@@ -81,9 +81,13 @@ export default function NavBar() {
               <Box>
               <Button
                   variant="contained"
-                  sx={{ 
+                  sx={{
                     backgroundColor : '#4CAF4F',
-                    fontSize : 16 , 
+                    boxShadow : 'none',
+                    px : 4,
+                    py : 1,
+                    textTransform : 'none',
+                    fontSize : 16
                   }}
                 >
                   Register now 
