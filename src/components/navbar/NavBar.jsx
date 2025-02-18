@@ -51,6 +51,14 @@ export default function NavBar() {
                     fontSize: 16,
                   }}
                 >
+                  Service
+                </Typography>
+                <Typography 
+                  sx={{
+                    color : 'black',
+                    fontSize: 16,
+                  }}
+                >
                   Features
                 </Typography>
                 <Typography 
@@ -59,7 +67,7 @@ export default function NavBar() {
                     fontSize: 16,
                   }}
                 >
-                  Community
+                  Product
                 </Typography>
                 <Typography 
                   sx={{
@@ -67,7 +75,7 @@ export default function NavBar() {
                     fontSize: 16,
                   }}
                 >
-                  Blog
+                  Testimonial
                 </Typography>
                 <Typography 
                   sx={{
@@ -75,11 +83,21 @@ export default function NavBar() {
                     fontSize: 16,
                   }}
                 >
-                  Pricing
+                  FAQ
                 </Typography>
               </Box>
               <Box>
-              <Button
+                <Button
+                  sx={{
+                    color : '#4CAF4F',
+                    mr : 4,
+                    textTransform : 'none',
+                    fontSize : 16
+                  }}
+                >
+                  Login
+                </Button>
+                <Button
                   variant="contained"
                   sx={{
                     backgroundColor : '#4CAF4F',
@@ -90,7 +108,7 @@ export default function NavBar() {
                     fontSize : 16
                   }}
                 >
-                  Register now 
+                  Sign up
                 </Button>
               </Box>
             </Box>
