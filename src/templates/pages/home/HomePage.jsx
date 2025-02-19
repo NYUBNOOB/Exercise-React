@@ -1393,17 +1393,29 @@ function HomePage() {
                 sx={{
                   backgroundColor : '#717171',
                   mt : 4,
-                  borderRadius : 2
+                  borderRadius : 2,
+                  display : 'flex',
+                  flexDirection : 'row'
                 }}
               >
                 <Typography
                   sx={{
-                    padding : 2,
+                    my : 2,
+                    ml : 2,
+                    mr : 8,
                     color : '#fff'
                   }}
                 >
-                  Your email address
+                  Your email address    
                 </Typography>
+                <Box
+                  component="img"
+                  src="send.svg" // Change to your logo path
+                  alt="send"
+                  sx={{
+                    mr : 2
+                  }}
+                />
               </Box>
             </Box>
           </Box>
