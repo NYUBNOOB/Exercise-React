@@ -2,11 +2,12 @@ import React from "react";
 import Box from "@mui/material/Box";
 import { Button, Container, Typography } from "@mui/material";
 import EastIcon from "@mui/icons-material/East";
-import TextField from '@mui/material/TextField';
+import NavBar from "../../components/navbar/NavBar";
 
 function HomePage() {
   return (
     <>
+    <NavBar />
       <Box
         sx={{
           backgroundColor: "#F5F7FA",

@@ -4,8 +4,12 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import { Container, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
+
+  const navigate = useNavigate();
+
   return (
     <Box>
       <AppBar
@@ -24,67 +28,52 @@ export default function NavBar() {
               <Box>
                 <Box
                   component="img"
-                  src="Logo.svg" // Change to your logo path
+                  src="../Logo.svg"
                   alt="Logo"
                   sx={{ height: 20, marginRight: 2 }}
-                ></Box>
+                />
               </Box>
               <Box 
                 sx={{
                   display : 'flex',
                   justifyContent : 'space-between',
                   alignItems : 'center',
-                  gap : 4
+                  gap : 2
                 }}
               >
-                <Typography 
+                <Button
                   sx={{
-                    color : 'black',
+                    color : "#000",
+                    textTransform : 'none',
                     fontSize : 16,
+                    backgroundColor : 'inherit'
                   }}
+                  onClick={() => navigate("/")}
                 >
                   Home
-                </Typography>
-                <Typography 
+                </Button>
+                <Button
                   sx={{
-                    color : 'black',
-                    fontSize: 16,
+                    color : "#000",
+                    textTransform : 'none',
+                    fontSize : 16,
+                    backgroundColor : 'inherit'
                   }}
+                  onClick={() => navigate("products")}
                 >
-                  Service
-                </Typography>
-                <Typography 
+                  Products
+                </Button>
+                <Button
                   sx={{
-                    color : 'black',
-                    fontSize: 16,
+                    color : "#000",
+                    textTransform : 'none',
+                    fontSize : 16,
+                    backgroundColor : 'inherit'
                   }}
+                  onClick={() => navigate("/users")}
                 >
-                  Features
-                </Typography>
-                <Typography 
-                  sx={{
-                    color : 'black',
-                    fontSize: 16,
-                  }}
-                >
-                  Product
-                </Typography>
-                <Typography 
-                  sx={{
-                    color : 'black',
-                    fontSize: 16,
-                  }}
-                >
-                  Testimonial
-                </Typography>
-                <Typography 
-                  sx={{
-                    color : 'black',
-                    fontSize: 16,
-                  }}
-                >
-                  FAQ
-                </Typography>
+                  User
+                </Button>
               </Box>
               <Box>
                 <Button
@@ -94,6 +83,7 @@ export default function NavBar() {
                     textTransform : 'none',
                     fontSize : 16
                   }}
+                  onClick={() => navigate('/login')}
                 >
                   Login
                 </Button>
@@ -102,11 +92,11 @@ export default function NavBar() {
                   sx={{
                     backgroundColor : '#4CAF4F',
                     boxShadow : 'none',
-                    px : 4,
-                    py : 1,
+                    px : 2,
                     textTransform : 'none',
                     fontSize : 16
                   }}
+                  onClick={() => navigate("/signup")}
                 >
                   Sign up
                 </Button>
