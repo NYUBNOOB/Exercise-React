@@ -25,12 +25,18 @@ export default function NavBar() {
                 alignItems: "center",
               }}
             >
-              <Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
                 <Box
                   component="img"
-                  src="../Logo.svg"
+                  src="Logo.svg"
                   alt="Logo"
-                  sx={{ height: 20, marginRight: 2 }}
+                  sx={{ height: 20, width: "auto", marginRight: 2, alignItems: "center"}}
                 />
               </Box>
               <Box 

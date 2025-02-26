@@ -8,6 +8,7 @@ import SignUpPage from '../pages/signup/SignUpPage';
 import CreateProductPage from '../pages/products/CreateProductPage';
 import CreateUserPage from '../pages/user/CreateUserPage';
 import UpdateProductPage from '../pages/products/UpdateProductPage';
+import UpdateUserPage from '../pages/user/UpdateUserPage';
 
 const Routes = () => {
 
@@ -19,6 +20,8 @@ const Routes = () => {
       children: [
         { path: "", element: <UserPage/>},
         { path: "create", element: <CreateUserPage />},
+        { path: "update/:id", element: <UpdateUserPage />},
+
       ]
     },
     { 

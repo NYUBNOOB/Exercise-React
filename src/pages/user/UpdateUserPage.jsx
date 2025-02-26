@@ -1,9 +1,12 @@
-import { Box, Button, Container, TextField, Typography } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Box, Button, TextField, Container, Typography } from "@mui/material";
 import axios from "axios";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-function CreateUserPage() {
+function UpdateUserPage() {
+
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -11,35 +14,52 @@ function CreateUserPage() {
   const [lastname, setLastname] = useState("");
   const [avatar, setAvatar] = useState("");
 
-  const navigate = useNavigate();
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("username", username);
-    console.log("password", password);
-    console.log("email", email);
-    console.log("firstname", firstname);
-    console.log("lastname", lastname);
-    console.log("avatar", avatar);
+    console.log("Username: ", username);
+    console.log("Password: ", password);
+    console.log("Email: ", email);
+    console.log("Firstname: ", firstname);
+    console.log("Lastname: ", lastname);
+    console.log("Avatar: ", avatar);
 
     try {
-      await axios.post(
-        "https://67b40d1e392f4aa94fa91a60.mockapi.io/api/v1/users",
+      await axios.put(
+        `https://67b40d1e392f4aa94fa91a60.mockapi.io/api/v1/users/${id}`,
         {
           username: username,
           password: password,
           email: email,
           firstName: firstname,
           lastName: lastname,
-          avatar: avatar,
+          avatar: avatar
         }
       );
-
       navigate("/users");
     } catch (e) {
       console.error("Error : ", e);
     }
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://67b40d1e392f4aa94fa91a60.mockapi.io/api/v1/users/${id}`
+        );
+        setUsername(response.data.username);
+        setPassword(response.data.password);
+        setEmail(response.data.email);
+        setFirstname(response.data.firstName);
+        setLastname(response.data.lastName);
+        setAvatar(response.data.avatar);
+      } catch (e) {
+        console.error("Error : ", e);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -64,7 +84,7 @@ function CreateUserPage() {
               fontWeight: "bold",
             }}
           >
-            Add Users
+            Edit Users
           </Typography>
           <Box
             sx={{
@@ -97,6 +117,7 @@ function CreateUserPage() {
                 <TextField
                   id="outlined-basic"
                   variant="outlined"
+                  value={username}
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       // Border color on hover
@@ -135,6 +156,7 @@ function CreateUserPage() {
                       },
                     },
                   }}
+                  value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Box>
@@ -161,6 +183,7 @@ function CreateUserPage() {
                       },
                     },
                   }}
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </Box>
@@ -187,6 +210,7 @@ function CreateUserPage() {
                       },
                     },
                   }}
+                  value={firstname}
                   onChange={(e) => setFirstname(e.target.value)}
                 />
               </Box>
@@ -213,6 +237,7 @@ function CreateUserPage() {
                       },
                     },
                   }}
+                  value={lastname}
                   onChange={(e) => setLastname(e.target.value)}
                 />
               </Box>
@@ -227,6 +252,7 @@ function CreateUserPage() {
                 <TextField
                   id="outlined-basic"
                   variant="outlined"
+                  value={avatar}
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       // Border color on hover
@@ -277,11 +303,11 @@ function CreateUserPage() {
                       boxShadow: "none",
                       textTransform: "none",
                       fontSize: 16,
-                      px: 5,
+                      px: 6,
                       my: 2,
                     }}
                   >
-                    Create
+                    Edit
                   </Button>
                 </Box>
               </Box>
@@ -293,4 +319,4 @@ function CreateUserPage() {
   );
 }
 
-export default CreateUserPage;
+export default UpdateUserPage;

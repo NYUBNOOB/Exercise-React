@@ -2,7 +2,6 @@ import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NavBar from "../../components/navbar/NavBar";
 
 function CreateProductPage() {
   const navigate = useNavigate();
@@ -40,27 +39,30 @@ function CreateProductPage() {
 
   return (
     <>
-      <NavBar />
       <Box
         sx={{
           backgroundColor: "#F5F7FA",
-          width: "100vw",
-          height: "100vh",
+          position: "absolute",  // Ensure it covers the whole page
+          top: 0,
+          left: 0,
+          width: "100%",        // Full width
+          minHeight: "100vh",   // Ensures full height even when content grows
         }}
       >
         <Container
           sx={{
             padding: 4,
+            mt : 2
           }}
         >
           <Typography
-              variant="h5"
-              sx={{
-                fontWeight : "bold"
-              }}
-            >
-              Add Products
-            </Typography>
+            variant="h5"
+            sx={{
+              fontWeight: "bold",
+            }}
+          >
+            Add Products
+          </Typography>
           <Box
             sx={{
               display: "flex",
@@ -68,8 +70,8 @@ function CreateProductPage() {
               backgroundColor: "#fff",
               padding: 4,
               borderRadius: 4,
-              height : 550,
-              my : 2
+              height: 550,
+              my: 2,
             }}
           >
             <Box
@@ -81,7 +83,6 @@ function CreateProductPage() {
                 gap: 1,
               }}
             >
-              
               <Box
                 sx={{
                   display: "flex",
