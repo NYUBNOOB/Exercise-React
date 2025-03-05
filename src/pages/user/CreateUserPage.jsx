@@ -2,6 +2,7 @@ import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function CreateUserPage() {
   const [username, setUsername] = useState("");
@@ -36,6 +37,12 @@ function CreateUserPage() {
       );
 
       navigate("/users");
+      Swal.fire({
+        title: "Success!",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } catch (e) {
       console.error("Error : ", e);
     }

@@ -4,40 +4,31 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
-function UpdateUserPage() {
+export default function UpdateCarPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [avatar, setAvatar] = useState("");
+  const [brand, setBrand] = useState("");
+  const [model, setModel] = useState("");
+  const [color, setColor] = useState("");
+  const [year, setYear] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Username: ", username);
-    console.log("Password: ", password);
-    console.log("Email: ", email);
-    console.log("Firstname: ", firstname);
-    console.log("Lastname: ", lastname);
-    console.log("Avatar: ", avatar);
 
     try {
       await axios.put(
-        `https://67b40d1e392f4aa94fa91a60.mockapi.io/api/v1/users/${id}`,
+        `https://67c00971b9d02a9f22480ba6.mockapi.io/api/cars/${id}`,
         {
-          username: username,
-          password: password,
-          email: email,
-          firstName: firstname,
-          lastName: lastname,
-          avatar: avatar,
+          brand: brand,
+          model: model,
+          color: color,
+          year: year,
         }
       );
-      navigate("/users");
+
+      navigate("/cars");
       Swal.fire({
-        title: "Success!",
+        title: "CREATE SUCCESS!",
         icon: "success",
         showConfirmButton: false,
         timer: 1500,
@@ -50,15 +41,13 @@ function UpdateUserPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://67b40d1e392f4aa94fa91a60.mockapi.io/api/v1/users/${id}`
+        const response = await axios.put(
+          `https://67c00971b9d02a9f22480ba6.mockapi.io/api/cars/${id}`
         );
-        setUsername(response.data.username);
-        setPassword(response.data.password);
-        setEmail(response.data.email);
-        setFirstname(response.data.firstName);
-        setLastname(response.data.lastName);
-        setAvatar(response.data.avatar);
+        setBrand(response.data.brand);
+        setModel(response.data.model);
+        setColor(response.data.color);
+        setYear(response.data.year);
       } catch (e) {
         console.error("Error : ", e);
       }
@@ -81,7 +70,8 @@ function UpdateUserPage() {
       >
         <Container
           sx={{
-            padding: 2,
+            padding: 4,
+            mt: 2,
           }}
         >
           <Typography
@@ -90,7 +80,7 @@ function UpdateUserPage() {
               fontWeight: "bold",
             }}
           >
-            Edit Users
+            Edit Products
           </Typography>
           <Box
             sx={{
@@ -99,7 +89,7 @@ function UpdateUserPage() {
               backgroundColor: "#fff",
               padding: 4,
               borderRadius: 4,
-              height: 680,
+              height: 550,
               my: 2,
             }}
           >
@@ -109,7 +99,7 @@ function UpdateUserPage() {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                gap: 2,
+                gap: 1,
               }}
             >
               <Box
@@ -119,11 +109,11 @@ function UpdateUserPage() {
                   gap: 1,
                 }}
               >
-                <Typography>Username</Typography>
+                <Typography>Brand</Typography>
                 <TextField
                   id="outlined-basic"
                   variant="outlined"
-                  value={username}
+                  value={brand}
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       // Border color on hover
@@ -136,7 +126,7 @@ function UpdateUserPage() {
                       },
                     },
                   }}
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={(e) => setBrand(e.target.value)}
                 />
               </Box>
               <Box
@@ -146,7 +136,7 @@ function UpdateUserPage() {
                   gap: 1,
                 }}
               >
-                <Typography>Password</Typography>
+                <Typography>Model</Typography>
                 <TextField
                   id="outlined-basic"
                   variant="outlined"
@@ -162,8 +152,8 @@ function UpdateUserPage() {
                       },
                     },
                   }}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={model}
+                  onChange={(e) => setModel(e.target.value)}
                 />
               </Box>
               <Box
@@ -173,7 +163,7 @@ function UpdateUserPage() {
                   gap: 1,
                 }}
               >
-                <Typography>Email</Typography>
+                <Typography>Color</Typography>
                 <TextField
                   id="outlined-basic"
                   variant="outlined"
@@ -189,8 +179,8 @@ function UpdateUserPage() {
                       },
                     },
                   }}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
                 />
               </Box>
               <Box
@@ -200,7 +190,7 @@ function UpdateUserPage() {
                   gap: 1,
                 }}
               >
-                <Typography>Firstname</Typography>
+                <Typography>Year</Typography>
                 <TextField
                   id="outlined-basic"
                   variant="outlined"
@@ -216,62 +206,8 @@ function UpdateUserPage() {
                       },
                     },
                   }}
-                  value={firstname}
-                  onChange={(e) => setFirstname(e.target.value)}
-                />
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 1,
-                }}
-              >
-                <Typography>Lastname</Typography>
-                <TextField
-                  id="outlined-basic"
-                  variant="outlined"
-                  sx={{
-                    "& .MuiOutlinedInput-root": {
-                      // Border color on hover
-                      "&:hover fieldset": {
-                        borderColor: "#4CAF4F",
-                      },
-                      // Border color on focus
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#4CAF4F",
-                      },
-                    },
-                  }}
-                  value={lastname}
-                  onChange={(e) => setLastname(e.target.value)}
-                />
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 1,
-                }}
-              >
-                <Typography>Avatar</Typography>
-                <TextField
-                  id="outlined-basic"
-                  variant="outlined"
-                  value={avatar}
-                  sx={{
-                    "& .MuiOutlinedInput-root": {
-                      // Border color on hover
-                      "&:hover fieldset": {
-                        borderColor: "#4CAF4F",
-                      },
-                      // Border color on focus
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#4CAF4F",
-                      },
-                    },
-                  }}
-                  onChange={(e) => setAvatar(e.target.value)}
+                  value={year}
+                  onChange={(e) => setYear(e.target.value)}
                 />
               </Box>
               <Box
@@ -293,9 +229,9 @@ function UpdateUserPage() {
                       textTransform: "none",
                       fontSize: 16,
                       px: 5,
-                      my: 2,
+                      my: 4,
                     }}
-                    onClick={() => navigate("/users")}
+                    onClick={() => navigate("/cars")}
                   >
                     Cancle
                   </Button>
@@ -309,8 +245,8 @@ function UpdateUserPage() {
                       boxShadow: "none",
                       textTransform: "none",
                       fontSize: 16,
-                      px: 6,
-                      my: 2,
+                      px: 7,
+                      my: 4,
                     }}
                   >
                     Edit
@@ -324,5 +260,3 @@ function UpdateUserPage() {
     </>
   );
 }
-
-export default UpdateUserPage;

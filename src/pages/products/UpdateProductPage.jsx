@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Box, Button, TextField, Container, Typography } from "@mui/material";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function UpdateProductPage() {
   const { id } = useParams();
@@ -33,6 +34,12 @@ function UpdateProductPage() {
       );
 
       navigate("/products");
+      Swal.fire({
+        title: "Success!",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500
+      });
     } catch (e) {
       console.error("Error : ", e);
     }
@@ -72,7 +79,7 @@ function UpdateProductPage() {
         <Container
           sx={{
             padding: 4,
-            mt: 2
+            mt: 2,
           }}
         >
           <Typography

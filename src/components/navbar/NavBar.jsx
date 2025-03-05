@@ -65,7 +65,7 @@ export default function NavBar() {
                     fontSize : 16,
                     backgroundColor : 'inherit'
                   }}
-                  onClick={() => navigate("products")}
+                  onClick={() => navigate("/products")}
                 >
                   Products
                 </Button>
@@ -80,6 +80,17 @@ export default function NavBar() {
                 >
                   User
                 </Button>
+                <Button
+                  sx={{
+                    color : "#000",
+                    textTransform : 'none',
+                    fontSize : 16,
+                    backgroundColor : 'inherit'
+                  }}
+                  onClick={() => navigate("/cars")}
+                >
+                  Cars
+                </Button>
               </Box>
               <Box>
                 <Button
@@ -89,9 +100,9 @@ export default function NavBar() {
                     textTransform : 'none',
                     fontSize : 16
                   }}
-                  onClick={() => navigate('/login')}
+                  onClick={() => navigate('/signin')}
                 >
-                  Login
+                  Sign in
                 </Button>
                 <Button
                   variant="contained"

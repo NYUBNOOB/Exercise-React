@@ -2,6 +2,7 @@ import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 function CreateProductPage() {
   const navigate = useNavigate();
@@ -13,11 +14,6 @@ function CreateProductPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("ProductName: ", productName);
-    console.log("Description: ", description);
-    console.log("price: ", price);
-    console.log("stock: ", stock);
-    console.log("category: ", category);
 
     try {
       await axios.post(
@@ -32,6 +28,12 @@ function CreateProductPage() {
       );
 
       navigate("/products");
+      Swal.fire({
+        title: "CREATE SUCCESS!",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500
+      });
     } catch (e) {
       console.error("Error : ", e);
     }

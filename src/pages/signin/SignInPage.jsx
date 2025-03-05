@@ -1,33 +1,41 @@
 import React from "react";
 import { Box , Container, Typography } from "@mui/material"
 
-function LoginPage() {
+function SignInPage() {
   return (
     <Box
       sx={{
         backgroundColor : "#F5F7FA",
-        position : "fixed",  
+        position : "absolute",  
         top : 0,
         left: 0,
-        width: "100vw",
+        width: "100%",
         height: "100vh",
       }}
     >
-      <Container>
+      <Container
+        sx={{
+          padding: 4,
+          mt : 2
+        }}
+      > 
         <Box
           sx={{
             display : "flex",
             justifyContent : "center",
             alignItems : "center",
-            padding : 30,
+            padding : 2,
+            my : 5,
             backgroundColor : "#fff",
+            borderRadius: 4,
+            height: 600
           }}
         >
           <Box
             sx={{
-              display : "flex",
-              justifyContent : "center",
-              alignItems : "center"
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
             }}
           >
             <Box
@@ -38,10 +46,11 @@ function LoginPage() {
           </Box>
           <Box
             sx={{
-              display : "flex",
-              justifyContent : "center",
-              alignItems : "center",
-              padding : 20,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: 20,
+              borderLeft: 1 
             }}
           >
             Hello
@@ -53,4 +62,4 @@ function LoginPage() {
   
 }
 
-export default LoginPage;
+export default SignInPage;

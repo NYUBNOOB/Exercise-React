@@ -7,6 +7,7 @@ import NavBar from "../../components/navbar/NavBar";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
@@ -19,7 +20,6 @@ const ProductPage = () => {
         const response = await axios.get(
           "https://67b40d1e392f4aa94fa91a60.mockapi.io/api/v1/products"
         );
-        console.log(response.data);
         setProducts(response.data);
       } catch (e) {
         console.error("Error : ", e);
@@ -35,7 +35,13 @@ const ProductPage = () => {
         `https://67b40d1e392f4aa94fa91a60.mockapi.io/api/v1/products/${id}`
       );
       setProducts(products.filter((product) => product.id !== id));
-      console.log(`Product ${id} deleted successfully`);
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your Products has been deleted.",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } catch (error) {
       console.error("Error deleting product:", error);
     }
@@ -78,6 +84,8 @@ const ProductPage = () => {
       <Box
         sx={{
           backgroundColor: "#F5F7FA",
+          width: "100%",        // Full width
+          minHeight: "100vh",   // Ensures full height even when content grows        
         }}
       >
         <Container
